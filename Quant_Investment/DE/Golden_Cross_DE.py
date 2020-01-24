@@ -6,7 +6,6 @@ qt = qy.get_German_quotes()
 tickers = qt.DE_tickers("Jan17_CS.csv")
 
 des_tck = []
-counter = 0
 
 start_time = dt.datetime.now()
 
