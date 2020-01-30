@@ -7,10 +7,7 @@ import time
 qt = qy.get_German_quotes()
 ncav = {}
 
-tickers = qt.DE_tickers("Xetra\Jan17_CS.csv")
-# tickers = ['AMZN', 'LEI.DE', 'RWE.DE', 'IBM', 'ASWN.SW', 'AOF.DE', 'AAPL', 'GE', 'GOOG', 'MSFT', 'SPOT',
-#            'COST', 'NIO', 'AMD', 'BAC', 'SNAP', 'FTSV', 'PRNB', 'VIE', 'NKTR', 'ALLO', 'BDRAF', 'SURRF',
-#            'ICHBF', 'ECA', 'AM', 'HPE', 'TEVA', 'ZS', 'NTAP', 'CDW']
+tickers = qt.DE_tickers("Jan17_CS.csv")
 
 start_time = dt.datetime.now()
 

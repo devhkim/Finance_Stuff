@@ -2,6 +2,7 @@ import pandas as pd
 from yahoo_fin.stock_info import get_data
 from yahoo_fin.stock_info import get_balance_sheet
 from yahoo_fin.stock_info import get_quote_table
+from yahoo_fin.stock_info import get_cash_flow
 
 class get_German_quotes:
     # def __init__(self):
@@ -46,3 +47,21 @@ class get_German_quotes:
                      int(df.loc[df['Breakdown'] == 'Total Liabilities'].iloc[:,1]))*1000 / \
                     self.market_cap(tck)
         return NCAV_last
+
+    def per(self, tck):
+        per = float(get_quote_table(tck)['PE Ratio (TTM)'])
+        return per
+
+    def gearing(self, tck):
+        equity = int(get_balance_sheet('AAPL').loc[get_balance_sheet('AAPL')['Breakdown'] == "Total stockholders' equity"].iloc[:,1])
+        debt = int(get_balance_sheet('AAPL').loc[get_balance_sheet('AAPL')['Breakdown'] == "Total Liabilities"].iloc[:,1])
+        gear = debt/equity
+        return gear
+
+    def oif_cash(self, tck):
+        cf = []
+        oc = int(get_cash_flow('AAPL').loc[get_cash_flow('AAPL')['Breakdown'] == "Net cash provided by operating activites"].iloc[:,1])
+        ic = int(get_cash_flow('AAPL').loc[get_cash_flow('AAPL')['Breakdown'] == "Net cash used for investing activites"].iloc[:,1])
+        fc =int(get_cash_flow('AAPL').loc[get_cash_flow('AAPL')['Breakdown'] == "Net cash used privided by (used for) financing activities"].iloc[:,1])
+        cf.append(oc, ic, fc)
+        return cf
