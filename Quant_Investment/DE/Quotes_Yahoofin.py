@@ -62,6 +62,6 @@ class get_German_quotes:
         cf = []
         oc = int(get_cash_flow('AAPL').loc[get_cash_flow('AAPL')['Breakdown'] == "Net cash provided by operating activites"].iloc[:,1])
         ic = int(get_cash_flow('AAPL').loc[get_cash_flow('AAPL')['Breakdown'] == "Net cash used for investing activites"].iloc[:,1])
-        fc =int(get_cash_flow('AAPL').loc[get_cash_flow('AAPL')['Breakdown'] == "Net cash used privided by (used for) financing activities"].iloc[:,1])
+        fc = int(get_cash_flow('AAPL').loc[get_cash_flow('AAPL')['Breakdown'] == "Net cash used privided by (used for) financing activities"].iloc[:,1])
         cf.append(oc, ic, fc)
         return cf
