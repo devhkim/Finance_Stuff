@@ -14,53 +14,62 @@ fcash = []
 ncav = []
 mcap = []
 
-countlist = [i*12 for i in list(range(65))[1:]]
+countlist = [i*40 for i in list(range(110))[1:]]
 
-tickers = qt.DE_tickers("Jan17_CS.csv")
-# tickers = ['AAPL', 'MSFT', '005930.KS']
+tickers = qt.DE_tickers("test.csv")
 start_time = dt.datetime.now()
 
 count = 0
 
 for i in tickers:
     if count in countlist:
-        time.sleep(180)
+        time.sleep(360)
         try:
             gear.append(qt.gearing(i))
             print(i + " gearing is successfully appended.")
+            count += 1
         except:
             gear.append("n.a.")
             print(i + " gearing is N/A.")
+            count += 1
         try :
             per.append(qt.per(i))
             print(i + " PER is successfully appended")
+            count += 1
         except:
             per.append("n.a.")
             print(i + " PER is N/A.")
+            count += 1
         try :
             ocash.append(int(get_cash_flow(i).loc[get_cash_flow(i)['Breakdown'] == "Net cash provided by operating activites"].iloc[:,1]))
             print(i + " operating cash flow is successfully appended")
+            count += 1
         except:
             ocash.append("n.a.")
             print(i + " operating cash flow is N/A.")
+            count += 1
         try:
             icash.append(int(get_cash_flow(i).loc[get_cash_flow(i)['Breakdown'] == "Net cash used for investing activites"].iloc[:,1]))
             print(i + " investing cash flow is successfully appended")
+            count += 1
         except:
             icash.append("n.a.")
             print(i + " investing cash flow is N/A.")
-        try:
-            fcash.append(int(get_cash_flow(i).loc[get_cash_flow(i)['Breakdown'] == "Net cash used privided by (used for) financing activities"].iloc[:, 1]))
-            print(i + " financing cash flow is successfully appended")
-        except:
-            fcash.append("n.a.")
-            print(i + " financing cash flow is N/A.")
+            count += 1
+        # try:
+        #     fcash.append(int(get_cash_flow(i).loc[get_cash_flow(i)['Breakdown'] == "Net cash used privided by (used for) financing activities"].iloc[:, 1]))
+        #     print(i + " financing cash flow is successfully appended")
+        # except:
+        #     fcash.append("n.a.")
+        #     print(i + " financing cash flow is N/A.")
         try :
             ncav.append(qt.NCAV(i))
             print(i + " NCAV is successfully appended")
+            count += 1
         except:
             ncav.append("n.a.")
             print(i + " NCAV is N/A.")
+            count += 1
         try :
             mcap.append(qt.market_cap(i))
             print(i + " market cap is successfully appended")
@@ -73,39 +82,49 @@ for i in tickers:
         try:
             gear.append(qt.gearing(i))
             print(i + " gearing is successfully appended.")
+            count += 1
         except:
             gear.append("n.a.")
             print(i + " gearing is N/A.")
+            count += 1
         try :
             per.append(qt.per(i))
             print(i + " PER is successfully appended")
+            count += 1
         except:
             per.append("n.a.")
             print(i + " PER is N/A.")
+            count += 1
         try :
             ocash.append(int(get_cash_flow(i).loc[get_cash_flow(i)['Breakdown'] == "Net cash provided by operating activites"].iloc[:,1]))
             print(i + " operating cash flow is successfully appended")
+            count += 1
         except:
             ocash.append("n.a.")
             print(i + " operating cash flow is N/A.")
+            count += 1
         try:
             icash.append(int(get_cash_flow(i).loc[get_cash_flow(i)['Breakdown'] == "Net cash used for investing activites"].iloc[:,1]))
             print(i + " investing cash flow is successfully appended")
+            count += 1
         except:
             icash.append("n.a.")
             print(i + " investing cash flow is N/A.")
-        try:
-            fcash.append(int(get_cash_flow(i).loc[get_cash_flow(i)['Breakdown'] == "Net cash used privided by (used for) financing activities"].iloc[:, 1]))
-            print(i + " financing cash flow is successfully appended")
-        except:
-            fcash.append("n.a.")
-            print(i + " financing cash flow is N/A.")
+            count += 1
+        # try:
+        #     fcash.append(int(get_cash_flow(i).loc[get_cash_flow(i)['Breakdown'] == "Net cash used privided by (used for) financing activities"].iloc[:, 1]))
+        #     print(i + " financing cash flow is successfully appended")
+        # except:
+        #     fcash.append("n.a.")
+        #     print(i + " financing cash flow is N/A.")
         try :
             ncav.append(qt.NCAV(i))
             print(i + " NCAV is successfully appended")
+            count += 1
         except:
             ncav.append("n.a.")
             print(i + " NCAV is N/A.")
+            count += 1
         try :
             mcap.append(qt.market_cap(i))
             print(i + " market cap is successfully appended")
