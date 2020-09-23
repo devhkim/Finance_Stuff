@@ -53,15 +53,15 @@ class get_German_quotes:
         return per
 
     def gearing(self, tck):
-        equity = int(get_balance_sheet('AAPL').loc[get_balance_sheet('AAPL')['Breakdown'] == "Total stockholders' equity"].iloc[:,1])
-        debt = int(get_balance_sheet('AAPL').loc[get_balance_sheet('AAPL')['Breakdown'] == "Total Liabilities"].iloc[:,1])
+        equity = int(get_balance_sheet(tck).loc[get_balance_sheet(tck)['Breakdown'] == "Total stockholders' equity"].iloc[:,1])
+        debt = int(get_balance_sheet(tck).loc[get_balance_sheet(tck)['Breakdown'] == "Total Liabilities"].iloc[:,1])
         gear = debt/equity
         return gear
 
     def oif_cash(self, tck):
         cf = []
-        oc = int(get_cash_flow('AAPL').loc[get_cash_flow('AAPL')['Breakdown'] == "Net cash provided by operating activites"].iloc[:,1])
-        ic = int(get_cash_flow('AAPL').loc[get_cash_flow('AAPL')['Breakdown'] == "Net cash used for investing activites"].iloc[:,1])
-        fc = int(get_cash_flow('AAPL').loc[get_cash_flow('AAPL')['Breakdown'] == "Net cash used privided by (used for) financing activities"].iloc[:,1])
+        oc = int(get_cash_flow(tck).loc[get_cash_flow(tck)['Breakdown'] == "Net cash provided by operating activites"].iloc[:,1])
+        ic = int(get_cash_flow(tck).loc[get_cash_flow(tck)['Breakdown'] == "Net cash used for investing activites"].iloc[:,1])
+        fc = int(get_cash_flow(tck).loc[get_cash_flow(tck)['Breakdown'] == "Net cash used privided by (used for) financing activities"].iloc[:,1])
         cf.append(oc, ic, fc)
         return cf

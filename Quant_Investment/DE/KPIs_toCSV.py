@@ -14,9 +14,17 @@ fcash = []
 ncav = []
 mcap = []
 
+
 countlist = [i*40 for i in list(range(110))[1:]]
 
 tickers = qt.DE_tickers("test.csv")
+
+countlist = [i*12 for i in list(range(4))[1:]]
+
+tickers = qt.DE_tickers("MDAX.csv")
+# tickers = qt.DE_tickers("Jan17_CS.csv")
+# tickers = ['AAPL', 'MSFT', '005930.KS']
+
 start_time = dt.datetime.now()
 
 count = 0
@@ -144,7 +152,8 @@ kpi['MarketCap'] = mcap
 kpi['NCAV'] = ncav
 
 kpi = pd.DataFrame(kpi)
-kpi.to_csv('C:\\Users\\Devin\\Documents\\Financial_Data_Cluster\\test.csv')
+# kpi.to_csv('C:\\Users\\Devin\\Documents\\Financial_Data_Cluster\\test.csv')
+kpi.to_csv('C:\\Users\\dedkim01\\Documents\\personal\\test.csv')
 
 print(kpi)
 # print(ncav.head(int(len(ncav)*0.05)))
